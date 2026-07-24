@@ -1,0 +1,12 @@
+{
+  "name": "asf-information-technology-website",
+  "version": "1.0.0",
+  "description": "Static marketing website for ASF Information Technology (asftech.net)",
+  "private": true,
+  "scripts": {
+    "start": "serve -s . -l ${PORT:-3000}"
+  },
+  "dependencies": {
+    "serve": "^14.2.3"
+  }
+}
