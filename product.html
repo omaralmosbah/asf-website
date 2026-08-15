@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Product | ASF Information Technology</title>
+  <meta name="description" content="Hospitality technology product specifications from ASF Information Technology.">
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css?v=20260815-3">
+</head>
+<body class="product-page">
+  <header class="detail-header">
+    <a class="brand" href="index.html" aria-label="ASF Information Technology"><img src="assets/logo.png" alt="ASF Information Technology"></a>
+    <a class="detail-back" href="index.html#products" data-en="← All products" data-ar="جميع المنتجات →">← All products</a>
+    <button class="language-toggle" id="languageToggle" type="button" aria-label="Switch to Arabic">العربية</button>
+  </header>
+
+  <main id="productRoot">
+    <section class="detail-hero">
+      <div class="detail-visual"><img id="productImage" src="" alt=""></div>
+      <div class="detail-intro">
+        <p class="detail-category" id="productCategory"></p>
+        <h1 id="productName"></h1>
+        <p class="detail-summary" id="productSummary"></p>
+        <div class="detail-actions">
+          <a class="button" id="quoteLink" href="mailto:oshammari@asftech.net" data-en="Request a quote" data-ar="اطلب عرض سعر">Request a quote</a>
+          <a class="detail-contact" href="tel:+966543358333"><span data-en="Talk to a specialist" data-ar="تحدث مع مختص">Talk to a specialist</span><strong dir="ltr">+966 54 335 8333</strong></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-body">
+      <div class="detail-overview">
+        <p class="section-kicker" data-en="Product overview" data-ar="نظرة عامة على المنتج">Product overview</p>
+        <h2 data-en="Designed for dependable daily service." data-ar="مصمم لخدمة يومية موثوقة.">Designed for dependable daily service.</h2>
+        <p id="productDescription"></p>
+      </div>
+      <div class="detail-features">
+        <p class="section-kicker" data-en="Key benefits" data-ar="المزايا الرئيسية">Key benefits</p>
+        <ul id="productFeatures"></ul>
+      </div>
+    </section>
+
+    <section class="spec-section">
+      <div class="spec-heading">
+        <p class="section-kicker" data-en="Technical details" data-ar="التفاصيل التقنية">Technical details</p>
+        <h2 data-en="Specifications" data-ar="المواصفات">Specifications</h2>
+      </div>
+      <dl class="spec-grid" id="productSpecs"></dl>
+    </section>
+
+    <section class="detail-cta">
+      <p class="section-kicker" data-en="Procurement · Delivery · Deployment" data-ar="التوريد · التسليم · التركيب">Procurement · Delivery · Deployment</p>
+      <h2 data-en="Need this product for your property?" data-ar="هل تحتاج هذا المنتج لمنشأتك؟">Need this product for your property?</h2>
+      <p data-en="Tell us the quantity, location and required date. ASF will coordinate the complete journey to site." data-ar="شاركنا الكمية والموقع والتاريخ المطلوب، وستنسق عصف الرحلة الكاملة حتى موقعك.">Tell us the quantity, location and required date. ASF will coordinate the complete journey to site.</p>
+      <a class="button button-light" id="bottomQuoteLink" href="mailto:oshammari@asftech.net" data-en="Build my quotation" data-ar="جهّز عرض السعر">Build my quotation</a>
+    </section>
+  </main>
+
+  <footer class="site-footer detail-footer"><img src="assets/logo.png" alt="ASF Information Technology"><p>© <span id="year"></span> ASF Information Technology</p><a href="index.html#products" data-en="Browse products" data-ar="تصفح المنتجات">Browse products</a></footer>
+  <script src="js/product.js?v=20260815-3"></script>
+</body>
+</html>
