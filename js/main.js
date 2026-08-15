@@ -1,38 +1,44 @@
-// ---------- Footer year ----------
-document.getElementById('year').textContent = new Date().getFullYear();
+const html = document.documentElement;
+const languageToggle = document.querySelector('#languageToggle');
+const navToggle = document.querySelector('#navToggle');
+const siteNav = document.querySelector('#siteNav');
 
-// ---------- Mobile nav toggle ----------
-const navToggle = document.getElementById('navToggle');
-const siteNav = document.getElementById('site-nav');
-if (navToggle && siteNav) {
-  navToggle.addEventListener('click', () => {
-    const open = siteNav.classList.toggle('open');
-    navToggle.setAttribute('aria-expanded', String(open));
+function setLanguage(language) {
+  const arabic = language === 'ar';
+  html.lang = language;
+  html.dir = arabic ? 'rtl' : 'ltr';
+  document.body.classList.toggle('is-arabic', arabic);
+  document.querySelectorAll('[data-en][data-ar]').forEach((node) => {
+    node.textContent = node.dataset[language];
   });
-  siteNav.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', () => {
-      siteNav.classList.remove('open');
-      navToggle.setAttribute('aria-expanded', 'false');
-    });
-  });
+  languageToggle.textContent = arabic ? 'English' : 'العربية';
+  languageToggle.setAttribute('aria-label', arabic ? 'Switch to English' : 'التبديل إلى العربية');
+  localStorage.setItem('asf-language', language);
 }
 
-// (hero manifest ticker removed — replaced with the illustrated Equipment section)
+languageToggle.addEventListener('click', () => setLanguage(html.lang === 'ar' ? 'en' : 'ar'));
+navToggle.addEventListener('click', () => {
+  const open = document.body.classList.toggle('nav-open');
+  navToggle.setAttribute('aria-expanded', String(open));
+});
+siteNav.addEventListener('click', () => {
+  document.body.classList.remove('nav-open');
+  navToggle.setAttribute('aria-expanded', 'false');
+});
 
-// ---------- Scroll reveal ----------
-const revealTargets = document.querySelectorAll('.card, .equip-card, .process-steps li, .sector-list li, .about-grid > *');
-revealTargets.forEach(el => el.classList.add('reveal'));
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('is-visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
 
-if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('reveal-in');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-  revealTargets.forEach(el => io.observe(el));
-} else {
-  revealTargets.forEach(el => el.classList.add('reveal-in'));
-}
+document.querySelectorAll('.product-card, .service-grid article, .process-list li').forEach((item) => {
+  item.classList.add('reveal');
+  revealObserver.observe(item);
+});
+
+document.querySelector('#year').textContent = new Date().getFullYear();
+setLanguage(localStorage.getItem('asf-language') === 'ar' ? 'ar' : 'en');
