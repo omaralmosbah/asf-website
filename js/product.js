@@ -32,7 +32,7 @@ const products = {
 
 const html = document.documentElement;
 const languageToggle = document.querySelector('#languageToggle');
-const key = new URLSearchParams(location.search).get('id');
+const key = location.hash.slice(1) || new URLSearchParams(location.search).get('id');
 const product = products[key] || products['express-station-410'];
 
 function render(language) {

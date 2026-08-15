@@ -40,5 +40,10 @@ document.querySelectorAll('.product-card, .service-grid article, .process-list l
   revealObserver.observe(item);
 });
 
+document.querySelectorAll('.product-card[href*="?id="]').forEach((card) => {
+  const productId = new URL(card.href).searchParams.get('id');
+  if (productId) card.href = `product.html#${productId}`;
+});
+
 document.querySelector('#year').textContent = new Date().getFullYear();
 setLanguage(localStorage.getItem('asf-language') === 'ar' ? 'ar' : 'en');
